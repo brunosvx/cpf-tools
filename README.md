@@ -6,7 +6,7 @@
 
 ![Validar CPF](validate.png)
 
-<br><br>
+<br>
 
 ### Gerar CPF:
 
