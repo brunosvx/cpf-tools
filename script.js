@@ -1,5 +1,5 @@
-
-function validate(cpf){
+﻿
+function validateCPF(cpf){
     const firstBit = cpf.split('').slice(0, -2);
     let firstValidate = firstBit.map((num, index) => num * (10 - index)).reduce((prev, cur) => prev + cur);
     firstValidate = 11 - (firstValidate % 11)
@@ -39,8 +39,17 @@ function generateCPF(){
 }
 
 
-validate('12345678901'); // --> CPF inválido
+function formatCPF(cpf){
+    try{
+        cpf = String(cpf).replace(/[^\d]/g, "");
 
+        if(cpf.length < 11) throw new Error('CPF length too low');
+        if(cpf.length > 11) throw new Error('CPF length too high');
 
+        return cpf.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, "$1.$2.$3-$4");
+    }catch(e){
+        return e;
+    }
+   
+}
 
-generateCPF() // --> CPF válido
