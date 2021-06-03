@@ -1,0 +1,20 @@
+{
+  "name": "cpf-tools",
+  "version": "1.0.0",
+  "description": "Biblioteca JavaScript open-source para validar, gerar e formatar CPF.",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/brunosvx/cpf-tools.git"
+  },
+  "keywords": ["cpf","validate","formatter","generate","gerador","validador","formatador","brazil","brasil","CPF", "cpf validator", "cpf generate", "cpf formatter"],
+  "author": "https://github.com/brunosvx/",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/brunosvx/cpf-tools/issues"
+  },
+  "homepage": "https://github.com/brunosvx/cpf-tools#readme"
+}

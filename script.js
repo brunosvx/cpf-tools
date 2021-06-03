@@ -29,7 +29,7 @@ function validateCPF(cpf){
 
 
 
-function generateCPF(){
+function generateCPF(format=false){
     let cpf = ''
 
     for(let i = 0; i < 9; i++){
@@ -45,6 +45,8 @@ function generateCPF(){
     let secondNumber = cpf.map((num, index) => num * (11 - index)).reduce((prev, cur) => prev + cur);
     secondNumber = 11 - (secondNumber % 11) > 9 ? 0 : 11 - (secondNumber % 11);
     cpf.push(secondNumber);
+
+    if(format) return formatCPF(cpf.join(''));
 
     return cpf.join('');
 
@@ -65,3 +67,9 @@ function formatCPF(cpf){
    
 }
 
+
+module.exports = {
+    formatCPF,
+    generateCPF,
+    validateCPF
+}
