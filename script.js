@@ -1,18 +1,30 @@
 ﻿
 function validateCPF(cpf){
-    const firstBit = cpf.split('').slice(0, -2);
-    let firstValidate = firstBit.map((num, index) => num * (10 - index)).reduce((prev, cur) => prev + cur);
-    firstValidate = 11 - (firstValidate % 11)
-    const firstNumber = firstValidate > 9 ? 0 : firstValidate;
+    try{
+        if(typeof cpf !== 'string') throw new TypeError('CPF must be String');
+        cpf = cpf.replace(/[^\d]/g, "");
 
-    firstBit.push(firstNumber);
-    let secondValidate = firstBit.map((num, index) => num * (11 - index)).reduce((prev, cur) => prev + cur);
-    secondValidate = 11 - (secondValidate % 11)
-    const secondNumber = secondValidate > 9 ? 0 : secondValidate;
+        if(cpf.length < 11) throw new Error('CPF length too low');
+        if(cpf.length > 11) throw new Error('CPF length too high'); 
 
-    if(cpf === firstBit.join('') + secondNumber) return 'CPF Válido';
+        const firstBit = cpf.split('').slice(0, -2);
+        let firstValidate = firstBit.map((num, index) => num * (10 - index)).reduce((prev, cur) => prev + cur);
+        firstValidate = 11 - (firstValidate % 11)
+        const firstNumber = firstValidate > 9 ? 0 : firstValidate;
 
-    return 'CPF inválido';
+        firstBit.push(firstNumber);
+        let secondValidate = firstBit.map((num, index) => num * (11 - index)).reduce((prev, cur) => prev + cur);
+        secondValidate = 11 - (secondValidate % 11)
+        const secondNumber = secondValidate > 9 ? 0 : secondValidate;
+
+        if(cpf === firstBit.join('') + secondNumber) return true;
+
+        return false;
+
+    }catch(e){
+        return e
+    }
+    
 }
 
 
